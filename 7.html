@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Frontend Task №7</title>
+	<style>
+
+.button {
+	text-align: center;
+	font-size: 12px;		
+	display: inline-block;	
+}
+
+.square {		
+	background: rgba(255,0,0,0.8);
+	position: absolute;
+}
+
+.triangle {
+	position: absolute;	
+}
+  
+.circle {
+	border-radius: 50%;
+	background: rgba(19,142,19,0.8);	
+	position: absolute;
+}
+	
+	</style>
+	
+</head>
+
+
+<body>
+
+<script>
+function display(num){
+
+	var n = document.getElementById("inp").value;	
+	bod = document.body;
+
+	if (num == 2) {
+
+		for (var i = 1;i<=n; i++){
+		
+			var elem = document.createElement('div'); 
+			elem.className = "triangle";								
+			var x = Math.random();
+			elem.style.border = x * 350 + "px solid transparent";
+			elem.style.borderBottom = x * 350 + "px solid rgba(0,0,255, 0.8)";
+			elem.style.top = 100 + Math.random() * 50 + "px";
+			elem.style.left = Math.random() * 1000 + "px";
+		
+			bod.before(elem);
+
+			elem.onclick = function() {
+			
+			if (this.style.borderBottomColor != "rgba(255, 255, 0, 0.8)") 
+				this.style.borderBottomColor = "rgba(255,255,0,0.8)"					
+						
+			else {this.remove()	}		
+			}		
+		}	
+	}
+		
+	else {
+	
+		for (var i = 1;i<=n; i++){
+		
+			var elem = document.createElement('div'); 
+	
+			if (num == 3) elem.className = "circle";
+			else elem.className = "square";
+			
+			var x = Math.random();
+			elem.style.width = x * 350 + "px";
+			elem.style.height = x * 350 + "px";
+			elem.style.top = 100 + Math.random() * 500 + "px";
+			elem.style.left = Math.random() * 1500 + "px";
+		
+			bod.before(elem);	
+
+			elem.onclick = function() {
+			
+				if (this.style.background != "rgba(255, 255, 0, 0.8)")
+					this.style.background = "rgba(255,255,0, 0.8)"
+							
+				else this.remove()
+			}		
+		}
+	}
+}
+</script>
+
+<input id = "inp" type="number" name="name1" value = "1">
+<br/>
+
+<button class="button" onclick = "display(1)">Квадрат</button>
+<button class="button" onclick = "display(2)">Треугольник</button>
+<button class="button" onclick = "display(3)">Круг</button>
+
+</body>
+</html>
